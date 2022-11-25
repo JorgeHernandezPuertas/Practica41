@@ -43,4 +43,73 @@ public class Elevador {
         // Genero número aleatorio de 8 digitos y lo devuelvo
         return RandomStringUtils.randomNumeric(8);
     }
+
+    // Setters
+    public void setUltimaRevision(LocalDate ultimaRevision) {
+        // Si la ultima revisión no es una fecha mayor a la actual se deja la que estaba
+        if (ultimaRevision.compareTo(this.ultimaRevision) > 0) {
+            this.ultimaRevision = ultimaRevision;
+        }
+    }
+
+    public void setEstado(EstadoElevador estado) {
+        this.estado = estado;
+    }
+
+    public void setPlantaActual(int plantaActual) {
+        // Si se intenta poner una planta fuera del rango se deja la que estaba
+        if (plantaActual >= 0 || plantaActual <= 8) {
+            this.plantaActual = plantaActual;
+        }
+    }
+
+    // Getters
+    public String getNumeroSerie() {
+        return numeroSerie;
+    }
+
+    public String getFabricantes() {
+        return fabricantes;
+    }
+
+    public int getPersonasMax() {
+        return personasMax;
+    }
+
+    public double getPesoMax() {
+        return pesoMax;
+    }
+
+    public LocalDate getFechaFabricacion() {
+        return fechaFabricacion;
+    }
+
+    public LocalDate getUltimaRevision() {
+        return ultimaRevision;
+    }
+
+    public EstadoElevador getEstado() {
+        return estado;
+    }
+
+    public int getPlantaActual() {
+        return plantaActual;
+    }
+
+    // Método toString
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Elevador{");
+        sb.append("numeroSerie=").append(numeroSerie);
+        sb.append(", fabricantes=").append(fabricantes);
+        sb.append(", personasMax=").append(personasMax);
+        sb.append(", pesoMax=").append(pesoMax);
+        sb.append(", fechaFabricacion=").append(fechaFabricacion);
+        sb.append(", ultimaRevision=").append(ultimaRevision);
+        sb.append(", estado=").append(estado);
+        sb.append(", plantaActual=").append(plantaActual);
+        sb.append('}');
+        return sb.toString();
+    }
 }
