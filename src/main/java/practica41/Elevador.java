@@ -115,10 +115,17 @@ public class Elevador {
     
     // Método mover
     public boolean mover(int numViajeros, double pesoTotal, int plantaDeseada){
+        // Pongo el estado en parado si el estado inicial es null para evitar el
+        // nullpointer del estado inicial, y si no se mueve se quedará parado
+        if (this.estado == null){
+            this.estado = EstadoElevador.PARADO;
+        }
+        
         // booleano que filtra si cumple todas las restricciones antes de moverse
         boolean sePuede = (numViajeros >= 0 && numViajeros <= 10) && 
                 (pesoTotal <= 800 && pesoTotal >=0) && (
-                plantaDeseada <= 8 && plantaDeseada >= 0);
+                plantaDeseada <= 8 && plantaDeseada >= 0) && 
+                (!this.estado.equals(EstadoElevador.AVERIADO));
         if (sePuede){
             if (this.plantaActual < plantaDeseada) {
                 this.estado = EstadoElevador.SUBIENDO;
