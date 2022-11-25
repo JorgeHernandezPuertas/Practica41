@@ -56,6 +56,13 @@ public class Edificio {
         System.out.println(ascensor1);
         System.out.println("--------------------------------------");
 
+        // Lo pongo en averiado para ver si se mueve averiado
+        ascensor1.setEstado(EstadoElevador.AVERIADO);
+        boolean mover6 = ascensor1.mover(3, 200, 3);
+        System.out.println("¿Se ha movido 6? " + mover6);
+        System.out.println(ascensor1);
+        System.out.println("--------------------------------------");
+
         // Imprimo la fecha de la próxima revisión del ascensor
         System.out.println("La próxima revisión del ascensor 1 es: "
                 + proximaRevision(ascensor1));
